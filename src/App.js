@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import products from './products.js';
+import Filtered from "./Filtered";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {products: []};
+    }
+
+    componentDidMount() {
+        const originalData = products;
+        this.setState({
+            products: originalData['products']
+        })
+    }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Filtered products={this.state.products}/>
       </div>
     );
   }
