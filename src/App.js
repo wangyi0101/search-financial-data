@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import products from './products.js';
 import Filtered from './Filtered';
@@ -26,15 +26,15 @@ class App extends Component {
 
     handleInputChange(event) {
         const target = event.target.value;
-        let tempSuugest = this.filterData(this.state.originalData, target);
+        let tempSuggest = this.filterData(this.state.originalData, target);
         let dataSet = new Set();
         const filteredData = [];
-        tempSuugest.forEach((item) => {
-            if(!(dataSet.has(item.name)))
+        tempSuggest.forEach((item) => {
+            if (!(dataSet.has(item.name)))
                 filteredData.push(item);
-                dataSet.add(item.name);
-            });
-        if(target.length > 0) {
+            dataSet.add(item.name);
+        });
+        if (target.length > 0) {
             this.setState({
                 suggestedData: filteredData,
                 keyWord: target
@@ -63,32 +63,34 @@ class App extends Component {
         data.forEach((item) => {
             const name = item.name.toLowerCase();
             const str = key.toLowerCase();
-            if(name.indexOf(str) !== -1) {
+            if (name.indexOf(str) !== -1) {
                 filteredData.push(item);
             }
         });
         return filteredData;
     }
 
-  render() {
-    return (
-      <div className="flex-container">
-          <div className="flex-item">
-              <form >
-                  <input type="text" onChange={this.handleInputChange} placeholder="Search Institution Name and Type" size="50"/>
-                  <AutoComplete
-                      products={this.state.suggestedData}
-                      onClick ={this.handleClick}
-                      keyWord={this.state.keyWord}
-                  />
-              </form>
-          </div>
-          <div className="flex-item search">
-              <Filtered products={this.state.filteredData.length > 0 ? this.state.filteredData : this.state.originalData} />
-          </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="flex-container">
+                <div className="flex-item">
+                    <form >
+                        <input type="text" onChange={this.handleInputChange}
+                               placeholder="Search Institution Name and Type" size="50"/>
+                        <AutoComplete
+                            products={this.state.suggestedData}
+                            onClick={this.handleClick}
+                            keyWord={this.state.keyWord}
+                        />
+                    </form>
+                </div>
+                <div className="flex-item search">
+                    <Filtered
+                        products={this.state.filteredData.length > 0 ? this.state.filteredData : this.state.originalData}/>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;

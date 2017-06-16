@@ -10,7 +10,7 @@ class AutoComplete extends Component {
 
     generateList() {
         const {products, onClick} = this.props;
-        return products.map((item, index) =>{
+        return products.map((item, index) => {
             return <li key={index} className="auto-li" onClick={onClick}>
                 {item.name}- <span style={{color: '#FF7F50'}}>{item.type.toLowerCase()}</span>
             </li>
@@ -20,10 +20,8 @@ class AutoComplete extends Component {
     render() {
         const listItems = this.generateList();
         const {products} = this.props;
-        if(products.length === 0) {
-            return (
-                null
-            )
+        if (products.length === 0) {
+            return (null)
         } else {
             return (
                 <div className="suggest-box">
