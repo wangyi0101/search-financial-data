@@ -42,7 +42,7 @@ class App extends Component {
         } else {
             this.setState({
                 suggestedData: [],
-                filteredData: this.state.originalData
+                filteredData: []
             })
         }
     }
@@ -74,19 +74,21 @@ class App extends Component {
         return (
             <div className="flex-container">
                 <div className="flex-item">
-                    <form >
+                    <form className="search-bar">
                         <input type="text" onChange={this.handleInputChange}
-                               placeholder="Search Institution Name and Type" size="50"/>
-                        <AutoComplete
-                            products={this.state.suggestedData}
-                            onClick={this.handleClick}
-                            keyWord={this.state.keyWord}
-                        />
+                               placeholder="Search Institution Name" size={50}/>
                     </form>
+                </div>
+                <div className="flex-item">
+                    <AutoComplete
+                        products={this.state.suggestedData}
+                        onClick={this.handleClick}
+                        keyWord={this.state.keyWord}
+                    />
                 </div>
                 <div className="flex-item search">
                     <Filtered
-                        products={this.state.filteredData.length > 0 ? this.state.filteredData : this.state.originalData}/>
+                        products={this.state.filteredData.length > 0 ? this.state.filteredData : []}/>
                 </div>
             </div>
         );

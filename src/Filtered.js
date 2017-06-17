@@ -8,13 +8,18 @@ function Filtered(props) {
             <hr/>
         </li>
     );
-    return (
-        <div>
-            <ul className="result-ul">
-                {listItems}
-            </ul>
-        </div>
-    );
+    if (products.length > 0) {
+        return (
+            <div>
+                <ul className="result-ul">
+                    {listItems}
+                </ul>
+            </div>
+        );
+    } else {
+        return (<div />)
+    }
+
 }
 
 export default Filtered;

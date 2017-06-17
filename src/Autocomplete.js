@@ -12,7 +12,7 @@ class AutoComplete extends Component {
         const {products, onClick} = this.props;
         return products.map((item, index) => {
             return <li key={index} className="auto-li" onClick={onClick}>
-                {item.name}- <span style={{color: '#FF7F50'}}>{item.type.toLowerCase()}</span>
+                {item.name}
             </li>
         });
     }
@@ -24,7 +24,7 @@ class AutoComplete extends Component {
             return (null)
         } else {
             return (
-                <div className="suggest-box">
+                <div className="suggest-box" id="box">
                     <ul className="auto-ul">
                         {listItems}
                     </ul>
